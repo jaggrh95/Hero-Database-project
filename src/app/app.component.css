@@ -1,0 +1,50 @@
+/* {
+    background: #000 !important;
+    color: #0f0 !important;
+    outline: solid #f00 1px !important;
+  }*/
+h1.Title
+{
+    margin-top: 22px;
+    padding-top: 22px;
+    color: crimson;
+    text-align: center;
+}
+div.Title
+{
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    border-style: double;
+    border-width: 15px;
+    
+    width: 60%;
+    background-color: white;
+}
+body.main
+{
+
+    background-image: "url(bg.jpg)";
+    margin: 0;
+    padding: 0;
+    margin-top: -22px;
+    width: 100%;
+    overflow: hidden;
+    height: fit-content;
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+ul
+{
+    list-style-type: none;
+    list-style: none;
+}
+li.HerofoundList
+{
+    
+    list-style-type: none;
+    list-style: none;
+}

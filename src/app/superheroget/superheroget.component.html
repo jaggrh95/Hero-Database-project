@@ -1,0 +1,44 @@
+ <div class="main">
+ <br>
+ <h2>Find every version of every hero right here!</h2>
+ <h3>Type your search request here</h3>
+ <input type="text" [(ngModel)]="HeroName">
+ <h5>(Updating might take a second when the keyword is small)</h5>
+  <div *ngIf="Data">
+      
+     
+    
+    <h4>Found instances containing the name</h4>
+    <div class="buttonholder" *ngFor="let name of names; let i = index">
+        <button value="{{name}}" (click)="Getspecific(name)">{{ name }}</button>
+    </div>
+    
+  </div>
+<div>
+  <h1>{{ NameChoice }}</h1>
+  <div class="textbox">
+  <P >
+    {{Description}}
+  </P>
+</div>
+<br>
+</div>
+  <div *ngIf="comics" class="Box">
+    <h4 >Comics featuring this hero ({{comicaantal}} in total)</h4>
+    <p *ngFor="let comic of comics; let i = index" class="APIitem" >{{ comic }}</p>
+  </div>
+  <br>
+  <div *ngIf="series" class="Box">
+      <h4 >serie episodes featuring this hero ({{serieaantal}} in total)</h4>
+      <p *ngFor="let serie of series; let i = index" class="APIitem" >{{ serie }}</p>
+  </div>
+  <br>
+  <div *ngIf="stories" class="Box">
+      <h4  >Stories featuring this hero ({{storyaantal}} in total)</h4>
+      <p *ngFor="let story of stories; let i = index" class="APIitem">{{ story }}</p>
+  </div>
+</div>
+    
+  
+
+

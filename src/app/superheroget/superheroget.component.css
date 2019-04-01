@@ -1,0 +1,16 @@
+div.main
+{
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    
+}
+.textbox
+{
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+}
