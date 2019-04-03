@@ -13,8 +13,13 @@ export class SuperherogetComponent implements OnInit {
   NameChoice : string;
   Description : string;
   id :number;
+  FullImage : string;
 
-  IDS : number[] = [0,1,2,3,4,5,6,7,8,9] ;
+  imageurl : string;
+  imageextension : string;
+  IDS : number[] = [0,1,2,3,4,5,6,7,8,9];
+
+  ComicURLS : string[];
   names : string[];
   comics : string[];
   series : string[];
@@ -22,6 +27,7 @@ export class SuperherogetComponent implements OnInit {
   comicaantal : number;
   serieaantal : number;
   storyaantal : number;
+
 
 
   constructor(private svc : MarvelService) { }
@@ -72,7 +78,11 @@ export class SuperherogetComponent implements OnInit {
         {
           this.Description = result.data.results[0].description;
           console.log(name);
-          
+
+          //get image
+          this.imageurl = result.data.results[0].thumbnail.path;
+          this.imageextension = result.data.results[0].thumbnail.extension;
+          this.FullImage = this.svc.GetImage(this.imageurl,this.imageextension);
           
 
           //Comics
@@ -80,7 +90,7 @@ export class SuperherogetComponent implements OnInit {
           for(let i = 0; i < result.data.results[0].comics.returned;i++)
           {
             this.comics[i] =  result.data.results[0].comics.items[i].name;
-           
+            
           }
           
           this.comicaantal =  result.data.results[0].comics.available;
@@ -103,14 +113,18 @@ export class SuperherogetComponent implements OnInit {
           
           for(let i = 0; i <  result.data.results[0].stories.returned;i++)
           {
-            this.stories[i] =  result.data.results[0].series.items[i].name;
+            this.stories[i] =  result.data.results[0].stories.items[i].name;
             
 
           }
 
           this.storyaantal =  result.data.results[0].stories.available;
           
+
+          
         });
+        
+
         
         
       

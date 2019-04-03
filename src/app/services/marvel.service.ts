@@ -14,9 +14,9 @@ export class MarvelService
         return this.http.get<RootObject>(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${Hero}&limit=10&ts=1&apikey=aff615eb65bf5a9816bfeb0fdbe0afa8&hash=608b22d49b6efa9cc3a9144eaa5e3a61`)
     }
 
-   /* GetSpecificData(Hero : String) {
-        return this.http.get<RootObject>(`https://gateway.marvel.com/v1/public/characters?name=${Hero}&ts=1&apikey=aff615eb65bf5a9816bfeb0fdbe0afa8&hash=608b22d49b6efa9cc3a9144eaa5e3a61`)
-    }*/
+   GetImage(url : String,extens : string) {
+        return `${url}/standard_amazing.${extens}`
+    }
 
     //api callt via ID om lijst van alle specifieke data op te noemen van deze character/hero
     Getcharacter(id : number) 
