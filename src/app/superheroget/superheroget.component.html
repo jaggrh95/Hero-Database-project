@@ -29,12 +29,12 @@
   <div *ngIf="comics" class="Box">
     <h4 >Comics featuring this character ({{comicaantal}} in total)</h4>
     <P>(first time clicking the buttons takes some time)</P>
-    <button (click)="Prev20(0)"> previous 20 </button>
-    <button (click)="Next20(0)"> next 20 </button>
+    <button (click)="Prev20(0)"> Prev </button>
+    <button (click)="Next20(0)"> Next </button>
     <div *ngFor="let image of COMICurls ;index as i" class="APIitem" >
+        <br>
         
-        
-     {{ comics[i] }}
+     <h5 class="apiitemtitle">{{ comics[i] }}</h5>
       <br>
       <img src="" [src]="image">
     </div>
@@ -42,16 +42,17 @@
   <br>
   <div *ngIf="series" class="Box">
       <h4 >serie episodes featuring this character ({{serieaantal}} in total)</h4>
-      <p *ngFor="let serie of series; let i = index" class="APIitem" >{{ serie }}</p>
+      <h5 *ngFor="let serie of series; let i = index" class="apiitemtitle" >
+          {{ serie }}</h5>
   </div>
   <br>
   <div *ngIf="stories" class="Box">
       <h4  >Stories featuring this character ({{storyaantal}} in total)</h4>
-      <p *ngFor="let story of stories; let i = index" class="APIitem">
+      <h5 *ngFor="let story of stories; let i = index" class="apiitemtitle">
           
-        {{ story }}
+          {{ story }}
         
-      </p>
+      </h5>
   </div>
 </div>
     

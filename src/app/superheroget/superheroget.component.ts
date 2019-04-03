@@ -32,10 +32,8 @@ export class SuperherogetComponent implements OnInit {
   constructor(private svc : MarvelService) { }
 
   ngOnInit() {
-    this.names = ["/"];
-    this.stories = ["/"];
-    this.comics=["/"];
-    this.series = ["/"];
+    this.names = [""];
+    
     this.doSearch(this.heroname);
     
   }
@@ -125,6 +123,9 @@ export class SuperherogetComponent implements OnInit {
  
   Getspecific(name : string)
   {
+    this.stories = [""];
+    this.comics=[""];
+    this.series = [""];
     for(let i = 0; i < 20;i++)
     {
     this.series[i] = " ";
