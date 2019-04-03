@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MarvelService, RootObject, Data,Item,Item2,Item3,Item4,Thumbnail,Comics,Result,Series,Stories,Events,Url} from '../services/marvel.service';
+import { MarvelService, RootObject,RootObjectC} from '../services/marvel.service';
 
 @Component({
   selector: 'app-superheroget',
@@ -14,12 +14,11 @@ export class SuperherogetComponent implements OnInit {
   Description : string;
   id :number;
   FullImage : string;
-
-  imageurl : string;
-  imageextension : string;
   IDS : number[] = [0,1,2,3,4,5,6,7,8,9];
+  Offset :number[] = [20,0,0];
+  COMICurls : string[] = ["","",""];
+  max :number[] = [0,0,0];
 
-  ComicURLS : string[];
   names : string[];
   comics : string[];
   series : string[];
@@ -52,6 +51,77 @@ export class SuperherogetComponent implements OnInit {
     return this.heroname
   }
 
+  Next20(keuze : number)
+  {
+    if(this.Offset[keuze]+ 20 > this.max[keuze])
+    {
+      this.Offset[keuze] = this.max[keuze]-20;
+      
+    }
+    else
+    {
+      this.Offset[keuze] = this.Offset[keuze]+20;
+    }
+    this.GetComicimageurls();
+  }
+  Prev20(keuze : number)
+  {
+    if(this.Offset[keuze]- 20 <= 0)
+    {
+        this.Offset[keuze] = 0
+    }
+    else
+    {
+      this.Offset[keuze] = this.Offset[keuze]-20;
+    }
+    this.GetComicimageurls();
+
+  }
+
+ 
+
+  
+  SetStories()
+  {
+    for(let i = 0; i <  this.Data.data.results[0].series.returned;i++)
+    {
+      this.series[i] =  this.Data.data.results[0].series.items[i].name;
+     
+
+    }
+
+    this.serieaantal =  this.Data.data.results[0].series.available;
+    this.max[1] = this.serieaantal;
+  }
+  SetSeries()
+  {
+    for(let i = 0; i <  this.Data.data.results[0].stories.returned;i++)
+          {
+            this.stories[i] =  this.Data.data.results[0].stories.items[i].name;
+            
+
+          }
+
+          this.storyaantal =  this.Data.data.results[0].stories.available;
+          this.max[2] = this.storyaantal;
+  }
+
+ GetComicimageurls()
+ {
+    this.svc.GetCharacterComics(this.id,this.Offset[0]).subscribe((result)=>{
+      
+      this.comicaantal = result.data.total;
+      this.max[0] = this.comicaantal;
+      for(let i = 0; i <  result.data.results.length;i++)
+    {
+      this.comics[i]=result.data.results[i].title;
+      this.COMICurls[i] = this.svc.GetImage(result.data.results[i].thumbnail.path,result.data.results[i].thumbnail.extension);
+     
+
+    }
+      
+    })
+ }
  
   Getspecific(name : string)
   {
@@ -77,52 +147,22 @@ export class SuperherogetComponent implements OnInit {
         this.svc.Getcharacter(this.id).subscribe((result)=>
         {
           this.Description = result.data.results[0].description;
-          console.log(name);
+          this.Data = result;
 
-          //get image
-          this.imageurl = result.data.results[0].thumbnail.path;
-          this.imageextension = result.data.results[0].thumbnail.extension;
-          this.FullImage = this.svc.GetImage(this.imageurl,this.imageextension);
-          
-
-          //Comics
+      
+          this.FullImage = this.svc.GetImage(result.data.results[0].thumbnail.path,result.data.results[0].thumbnail.extension);
         
-          for(let i = 0; i < result.data.results[0].comics.returned;i++)
-          {
-            this.comics[i] =  result.data.results[0].comics.items[i].name;
-            
-          }
-          
-          this.comicaantal =  result.data.results[0].comics.available;
+          //this.SetComics();
+
+          this.SetSeries();
+
+          this.SetStories();
+
+          this.GetComicimageurls();
 
 
-          //Series
-         
-          for(let i = 0; i <  result.data.results[0].series.returned;i++)
-          {
-            this.series[i] =  result.data.results[0].series.items[i].name;
-           
-
-          }
-
-          this.serieaantal =  result.data.results[0].series.available;
-
-
-
-          //Stories
-          
-          for(let i = 0; i <  result.data.results[0].stories.returned;i++)
-          {
-            this.stories[i] =  result.data.results[0].stories.items[i].name;
-            
-
-          }
-
-          this.storyaantal =  result.data.results[0].stories.available;
-          
-
-          
         });
+        
         
 
         
@@ -133,13 +173,10 @@ export class SuperherogetComponent implements OnInit {
 
   doSearch(Hero : string)
   {
-    for(let i = 0; i < 10;i++)
-    {
-    this.names[i] = "";
-   
-    }
+    
       this.svc.getData(Hero).subscribe((result)=> {
         this.Data = result;
+        this.names.length = result.data.results.length;
         for(let i = 0; i < this.Data.data.results.length;i++)
         {
           this.names[i] = this.Data.data.results[i].name;
