@@ -7,8 +7,9 @@ h1.Title
 {
     margin-top: 22px;
     padding-top: 22px;
-    color: crimson;
+    color: black;
     text-align: center;
+    font-family: 'Anton', sans-serif;
 }
 div.Title
 {
@@ -18,16 +19,16 @@ div.Title
     align-items: center;
     align-content: center;
     text-align: center;
-    border-style: double;
-    border-width: 15px;
-    
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 15px;
     width: 60%;
-    background-color: white;
+    background-color: lightgray;
 }
 body.main
 {
 
-    background-image: "url(bg.jpg)";
+   
     margin: 0;
     padding: 0;
     margin-top: -22px;

@@ -15,9 +15,10 @@ export class SuperherogetComponent implements OnInit {
   id :number;
   FullImage : string;
   IDS : number[] = [0,1,2,3,4,5,6,7,8,9];
-  Offset :number[] = [20,0,0];
+  Offset :number[] = [0,0,0];
   COMICurls : string[] = ["","",""];
   max :number[] = [0,0,0];
+  Orderby = "title";
 
   names : string[];
   comics : string[];
@@ -43,6 +44,13 @@ export class SuperherogetComponent implements OnInit {
     
   }
 
+  order(variable : string)
+  {
+    console.log(variable);
+   this.Orderby = variable;
+   this.GetComicimageurls();
+
+  }
 
   //als we een setter gebruiken moeten we ook een getter hebben aangezien het 2-way binding betreft
   get HeroName() {
@@ -72,6 +80,18 @@ export class SuperherogetComponent implements OnInit {
     {
       this.Offset[keuze] = this.Offset[keuze]-20;
     }
+    this.GetComicimageurls();
+
+  }
+  first(keuze : number)
+  {
+    this.Offset[keuze] = 0;
+    this.GetComicimageurls();
+
+  }
+  last(keuze : number)
+  {
+    this.Offset[keuze] = this.max[keuze]-20;
     this.GetComicimageurls();
 
   }
@@ -106,7 +126,7 @@ export class SuperherogetComponent implements OnInit {
 
  GetComicimageurls()
  {
-    this.svc.GetCharacterComics(this.id,this.Offset[0]).subscribe((result)=>{
+    this.svc.GetCharacterComics(this.id,this.Offset[0],this.Orderby).subscribe((result)=>{
       
       this.comicaantal = result.data.total;
       this.max[0] = this.comicaantal;

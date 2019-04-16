@@ -10,11 +10,14 @@
     
     <h4>Results containing : {{HeroName}}</h4>
     <div class="buttonholder" *ngFor="let name of names; let i = index">
-        <button value="{{name}}" (click)="Getspecific(name)">{{ name }}</button>
+        <button value="{{name}}" (click)="Getspecific(name)" class="button">{{ name }}</button>
     </div>
     
   </div>
-<div>
+  <br>
+  <br>
+  <br>
+<div class="herobox" *ngIf="NameChoice">
   <h1>{{ NameChoice }}</h1>
   <div class="textbox">
       
@@ -29,16 +32,28 @@
   <div *ngIf="comics" class="Box">
     <h4 >Comics featuring this character ({{comicaantal}} in total)</h4>
     <P>(first time clicking the buttons takes some time)</P>
-    <button (click)="Prev20(0)"> Prev </button>
-    <button (click)="Next20(0)"> Next </button>
-    <div *ngFor="let image of COMICurls ;index as i" class="APIitem" >
-        <br>
-        
-     <h5 class="apiitemtitle">{{ comics[i] }}</h5>
-      <br>
-      <img src="" [src]="image">
-    </div>
+    <button (click)="first(0)" class="button"> First </button>
+    <button (click)="Prev20(0)" class="button"> Prev </button>
+    <button (click)="Next20(0)" class="button"> Next </button>
+    <button (click)="last(0)" class="button"> Last </button>
+    <br>
+    <p>Order by</p>
+    <button (click)="order('focDate')" class="button"> FOC Date </button>
+    <button (click)="order('title')" class="button"> Title </button>
+    <button (click)="order('onsaleDate')" class="button"> Release date </button>
+    <button (click)="order('issueNumber')" class="button"> issue number </button>
+    <p>showing from number {{Offset[0]}} to {{Offset[0]+20}}</p>
+    
   </div>
+  <div *ngIf="comics" class="comicrows">
+  <div *ngFor="let image of COMICurls ;index as i" class="APIitemComic" >
+    <br>
+    
+ <h5 class="apiitemtitle">{{ comics[i] }}</h5>
+  <br>
+  <img src="" [src]="image">
+</div>
+</div>
   <br>
   <div *ngIf="series" class="Box">
       <h4 >serie episodes featuring this character ({{serieaantal}} in total)</h4>

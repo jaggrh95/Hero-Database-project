@@ -27,9 +27,9 @@ export class MarvelService
     {
         return this.http.get<RootObject>(`https://gateway.marvel.com/v1/public/characters/${id}?${this.APIKEY}`)
     }
-    GetCharacterComics(id : number,offset : number) 
+    GetCharacterComics(id : number,offset : number,order : string) 
     {
-        return this.http.get<RootObjectC>(`https://gateway.marvel.com/v1/public/characters/${id}/comics?offset=${offset}&limit=20&${this.APIKEY}`)
+        return this.http.get<RootObjectC>(`https://gateway.marvel.com/v1/public/characters/${id}/comics?offset=${offset}&orderBy=${order}&limit=20&${this.APIKEY}`)
     }
 }
 export interface Thumbnail {

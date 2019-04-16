@@ -14,6 +14,15 @@ div.main
     width: 60%;
     margin-left: 20%;
 }
+.herobox
+{
+    margin: auto;
+    border-style: solid;
+    border-color: #555555;
+    border-radius:5px;
+    width: 60%;
+    background: lightgray;
+}
 .APIitem
 {
     
@@ -22,12 +31,68 @@ div.main
     width: fit-content;
     margin: auto;
     margin-top: 5px;
-    background-color: white;
-    background: white;
+    background-color: lightgray;
+    background: lightgray;
     padding-bottom: 20px;
 }
 h5.apiitemtitle
 {
-    color: red;
+    color: black;
+
+}
+.button {
+    background-color: #555555; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Merriweather Sans', sans-serif;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .comicrows
+  {
+     margin: auto;
+     margin-left: 2%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-flow: row;
+      flex-wrap: wrap
+    
+  }
+  .APIitemComic
+{
+    
+    border-width: 3px;
+    border-style: solid;
+    width: 19%;
+  
+    background-color: lightgray;
+    background: lightgray;
+    padding-bottom: 20px;
+}
+h2
+{
+    font-family: 'Anton', sans-serif;
+}
+h3{
+    font-family: 'Anton', sans-serif;
+}
+h4{
+    font-family: 'Merriweather Sans', sans-serif;
+    text-decoration-line: underline;
+    font-size: 2em;
+    
+}
+h5{
+    font-family: 'Merriweather Sans', sans-serif;
+}
+p
+{
+    font-family: 'Merriweather Sans', sans-serif;
 
 }
