@@ -3,7 +3,7 @@
  <h2>Find every version of every character right here!</h2>
  <h3>Type your search request here</h3>
  <input type="text" [(ngModel)]="HeroName">
- <h5>(Updating might take a second when the keyword is small)</h5>
+ <h5>(Updating might take a second)</h5>
   <div *ngIf="Data">
       
      
@@ -31,7 +31,7 @@
 </div>
   <div *ngIf="comics" class="Box">
     <h4 >Comics featuring this character ({{comicaantal}} in total)</h4>
-    <P>(first time clicking the buttons takes some time)</P>
+    
     <button (click)="first(0)" class="button"> First </button>
     <button (click)="Prev20(0)" class="button"> Prev </button>
     <button (click)="Next20(0)" class="button"> Next </button>
