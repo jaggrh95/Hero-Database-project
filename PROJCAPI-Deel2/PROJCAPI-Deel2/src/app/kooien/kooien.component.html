@@ -1,0 +1,62 @@
+<div class="box">
+  <div class= "Toolbar">
+      Parameter : 
+      <input type="text" [(ngModel)]="SearchParameter">
+      Filter op :
+      <select name="Filter" id="" [(ngModel)]="CurrentFilter">
+          <option *ngFor="let item of FilterOptionList" value="{{item}}">{{item}}</option>
+      </select>
+         
+      Sorteer op : 
+      <select name="Sort" id="" [(ngModel)]="CurrentSort">
+          <option *ngFor="let item of SortOptionList" value="{{item}}">{{item}}</option>
+      </select>
+      
+      <br>
+      <button name="Submit" (click)="ClickSubmitDieren()" class="sbmitbttn">Zoek Kooien</button>
+      
+    
+  </div>
+  Data
+  
+  <br>
+  <div *ngIf="ShowData">
+    <button (click)="prev()">Vorige</button>
+    Pagina : {{Currentpage}}
+    <button (click)="next()">Volgende</button>
+    <br>
+    Aantal resultaten per pagina : 
+          <select name="Pages" id="" [(ngModel)]="ShowAantal" (ngModelChange)="onChangeSelection()">
+                  <option *ngFor="let item of showAantaloptions" value="{{item}}" >{{item}}</option>
+              </select>
+  
+  
+  <div *ngFor="let Kooi of Kooien;index as i " class="Listitem" >
+      <div class="databox">
+          <p> Id : {{Kooi.kooiID}}</p>
+          <Br>
+          <p> Oppervlakte : {{Kooi.kooiOppervlakte}}m2</p>
+          <Br>
+          <p> Voeding : {{Kooi.kooiVoeding}}</p>
+          <Br>
+          <p> Habitat : {{Kooi.kooiHabitatsoort}}</p>
+         
+      </div>
+      <div class="databoxcenter">
+          <br>
+      </div>
+         
+          <div class="buttonbox">
+                 
+                  <button pButton type="button" *ngIf="AS.isAuthenticated()" class="ui-button-rounded" label="Verwijder kooi" (click)="DeleteClick(i)"></button>
+  
+              </div>
+          
+          
+      </div>
+  
+  </div>
+  </div>
+  <button pButton type="button" *ngIf="AS.isAuthenticated()" class="ui-button-rounded" label="Nieuwe kooi" [routerLink]="['/Createkooi']" [routerLinkActive]="['ui-button-success']"></button>
+          
+  

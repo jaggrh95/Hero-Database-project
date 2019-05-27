@@ -1,0 +1,67 @@
+<div class="box">
+<div class= "Toolbar">
+    Parameter : 
+    <input type="text" [(ngModel)]="SearchParameter">
+    Filter op :
+    <select name="Filter" id="" [(ngModel)]="CurrentFilter">
+        <option *ngFor="let item of FilterOptionList" value="{{item}}">{{item}}</option>
+    </select>
+       
+    Sorteer op : 
+    <select name="Sort" id="" [(ngModel)]="CurrentSort">
+        <option *ngFor="let item of SortOptionList" value="{{item}}">{{item}}</option>
+    </select>
+    
+    <br>
+    <button name="Submit" (click)="ClickSubmitDieren()" class="sbmitbttn">Zoek Dieren</button>
+    
+  
+</div>
+Data
+
+<br>
+<div *ngIf="ShowData">
+    <button (click)="prev()">Vorige</button>
+    Pagina : {{Currentpage}}
+    <button (click)="next()">Volgende</button>
+    <br> Aantal resultaten per pagina : 
+    
+        <select name="Pages" id="" [(ngModel)]="ShowAantal" (ngModelChange)="onChangeSelection()">
+                <option *ngFor="let item of showAantaloptions" value="{{item}}" >{{item}}</option>
+            </select>
+
+
+<div *ngFor="let Dier of Dieren;index as i " class="Listitem" >
+    <div class="databox">
+        <p> Id : {{Dier.dierID}}</p>
+        <Br>
+        <p> Naam : {{Dier.dierNaam}}</p>
+        <Br>
+        <p> Leeftijd : {{Dier.dierLeeftijd}}</p>
+        <Br>
+        <p> Soort : {{Dier.dierSoort}}</p>
+       
+    </div>
+    <div class="databoxcenter">
+        
+        <p> Specifiek : {{Dier.dierSoortSpecifieker}}</p>
+        <Br>
+        <p> Voeding : {{Dier.dierVoeding}}</p>
+        <Br>
+        <p> Geslacht : {{Dier.dierGeslacht}}</p>
+        <Br>
+        <p> Gewicht : {{Dier.dierGewicht}}Kg</p>
+        </div>
+        <div class="buttonbox">
+              
+                <button pButton type="button" *ngIf="AS.isAuthenticated()" class="ui-button-rounded" label="Dier != levend" (click)="DeleteClick(i)"></button>
+
+            </div>
+        
+        
+    </div>
+
+</div>
+</div>
+<button pButton type="button" *ngIf="AS.isAuthenticated()" class="ui-button-rounded" label="Nieuw Dier" [routerLink]="['/CreateDier']" [routerLinkActive]="['ui-button-success']"></button>
+        

@@ -1,0 +1,72 @@
+<div class="box">
+  <h3>Vul data in voor nieuwe dier</h3>
+    Naam
+    <br>
+    <input type="text" [(ngModel)]="NaamVeld">
+    <br>
+    <br>
+    Leeftijd
+    <br>
+    <input type="text" [(ngModel)]="LeeftijdVeld">
+    <br>
+    <br>
+    <form>
+        Geslacht
+        <br>
+        <input type="radio" name="a1"  [(ngModel)]="GeslachtVeld" value="M">Mannelijk
+        <input type="radio" name="a1" [(ngModel)]="GeslachtVeld" value="V">Vrouwelijk
+      </form>
+    <br>
+    Soort
+    <br>
+    <input type="text" [(ngModel)]="SoortVeld">
+    <br>
+    <br>
+     Specific soort
+    <br>
+    <input type="text" [(ngModel)]="SpecificVeld">
+    <br>
+    <br>
+    Afkomst
+    <br>
+    <input type="text" [(ngModel)]="AfkomstVeld">
+    <br>
+    <br>
+    Gewicht (in kg)
+    <br>
+    <input type="text" [(ngModel)]="GewichtVeld">
+    <br>
+    <br>
+    Voeding
+    <br>
+    <input type="text" [(ngModel)]="VoedingVeld">
+    <br>
+    <br>
+    Omschrijving
+    <br>
+    <textarea class="omschr"  [(ngModel)]="OmschrijvingsVeld"> </textarea>
+      <br>
+      <br>
+    Kooi
+    <br>
+    <select name="Kooi" id="" [(ngModel)]="CurrentKooi" (ngModelChange)="onChangeSelection()">
+        <option *ngFor="let item of KooiIds" value="{{item}}">{{item}}</option>
+    </select>
+    <div *ngIf=CurrentkooiOpp>
+      Oppervlakte van : {{CurrentkooiOpp}}
+      <br>
+      Habitat : {{CurrentKooiHabitat}}
+      <br>
+      Voeding : {{CurrentkooiVoeding}}
+      <br>
+
+    </div>
+    <br>
+    <div *ngIf="ERRORVAR">
+      <h4 class="Errortekst">Fout bij het versturen, zijn alle velden ingevuld?</h4>
+    </div>
+    <br>
+    <br>
+    <button (click)="SubmitBttnClick()" >Maak Aan</button>
+
+</div>

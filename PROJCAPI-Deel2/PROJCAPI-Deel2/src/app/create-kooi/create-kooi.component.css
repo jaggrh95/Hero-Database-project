@@ -1,0 +1,15 @@
+.box
+{
+    margin: auto;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    width: 30%;
+    height: fit-content;
+
+}
+.omschr
+{
+    height: 200px;
+    width: 200px;
+}

@@ -1,0 +1,55 @@
+.box
+{
+ margin: auto;
+ border-width: 5px;
+ border-style: solid;
+ border-radius: 10px;
+ width: 80%;
+ height: fit-content;
+}
+.Toolbar
+{
+    width: 99%;
+    height: 10%;
+}
+.databox
+{
+    width: 32%;
+    text-align: left;
+}
+.databoxcenter
+{
+    width: 32%;
+    text-align: center;
+}
+.Listitem
+{
+    border-style: solid;
+    border-color: black;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 0ch;
+    
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap
+    
+
+}
+.buttonbox
+{
+    text-align: right;
+    width: 34%;
+    margin-top: 1em;
+
+}
+p
+{
+    display: inline;
+}
+.sbmitbttn
+{
+  
+}
