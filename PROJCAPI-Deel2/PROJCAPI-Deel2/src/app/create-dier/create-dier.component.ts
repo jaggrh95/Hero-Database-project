@@ -57,9 +57,26 @@ export class CreateDierComponent implements OnInit {
 
   ngOnInit() {
   }
+  getspecificdata()
+{
+  this.ZooSvc.getSpecificKooi(this.CurrentKooi).subscribe((result) => {
+     
+    
+        
+        this.CurrentKooiHabitat = result.kooiHabitatsoort;
+        this.CurrentkooiOpp = result.kooiOppervlakte;
+        this.CurrentkooiVoeding = result.kooiVoeding;
+
+        console.log(this.CurrentKooiHabitat);
+    console.log(this.CurrentkooiOpp);
+    console.log(this.CurrentkooiVoeding);
+      
+     
+    } )
+}
 Getdata()
 {
-  this.ZooSvc.getKooiDataList("/","/","/",0,100).subscribe((result) => {
+  this.ZooSvc.getKooiDataList("/","/","/",0,500000).subscribe((result) => {
      
     for(let i = 0; i < result.length;i++)
     {
@@ -73,6 +90,10 @@ Getdata()
       }
      
     }
+    console.log(this.CurrentKooiHabitat);
+    console.log(this.CurrentkooiOpp);
+    console.log(this.CurrentkooiVoeding);
+
     
 
 
@@ -82,7 +103,9 @@ Getdata()
 
   onChangeSelection()
   {
-    this.Getdata();
+    console.log(this.CurrentKooi);
+   
+    this.getspecificdata();
   }
   SubmitBttnClick()
   {
