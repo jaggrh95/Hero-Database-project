@@ -13,7 +13,7 @@
       </select>
       
       <br>
-      <button name="Submit" (click)="ClickSubmitDieren()" class="sbmitbttn">Zoek Kooien</button>
+      <button name="Submit" (click)="ClickSubmitDieren()" class="small button">Zoek Kooien</button>
       
     
   </div>
@@ -21,9 +21,9 @@
   
   <br>
   <div *ngIf="ShowData">
-    <button (click)="prev()">Vorige</button>
+    <button (click)="prev()" class="small button">Vorige </button>
     Pagina : {{Currentpage}}
-    <button (click)="next()">Volgende</button>
+    <button (click)="next()" class="small button">Volgende</button>
     <br>
     Aantal resultaten per pagina : 
           <select name="Pages" id="" [(ngModel)]="ShowAantal" (ngModelChange)="onChangeSelection()">
@@ -48,7 +48,7 @@
          
           <div class="buttonbox">
                  
-                  <button pButton type="button" *ngIf="AS.isAuthenticated()" class="ui-button-rounded" label="Verwijder kooi" (click)="DeleteClick(i)"></button>
+                  <button pButton type="button" *ngIf="AS.isAuthenticated()" class="small button" label="Verwijder kooi" (click)="DeleteClick(i)"></button>
   
               </div>
           
@@ -57,6 +57,6 @@
   
   </div>
   </div>
-  <button pButton type="button" *ngIf="AS.isAuthenticated()" class="ui-button-rounded" label="Nieuwe kooi" [routerLink]="['/Createkooi']" [routerLinkActive]="['ui-button-success']"></button>
+  <button pButton type="button" *ngIf="AS.isAuthenticated()" class="small button" label="Nieuwe kooi" [routerLink]="['/Createkooi']" [routerLinkActive]="['ui-button-success']"></button>
           
   

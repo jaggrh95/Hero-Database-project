@@ -11,7 +11,6 @@ import { ToolbarModule } from "primeng/toolbar";
 import { KooienComponent } from './kooien/kooien.component';
 import { DierenComponent } from './dieren/dieren.component';
 import { CreateKooiComponent } from './create-kooi/create-kooi.component';
-import { SearchKooiComponent } from './search-kooi/search-kooi.component';
 import { CreateDierComponent } from './create-dier/create-dier.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/Authenticationservice';
@@ -23,7 +22,6 @@ import { CallbackComponent } from './callback/callback.component';
     KooienComponent,
     DierenComponent,
     CreateKooiComponent,
-    SearchKooiComponent,
     CreateDierComponent,
     LoginComponent,
     CallbackComponent

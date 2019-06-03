@@ -13,7 +13,7 @@
     </select>
     
     <br>
-    <button name="Submit" (click)="ClickSubmitDieren()" class="sbmitbttn">Zoek Dieren</button>
+    <button name="Submit" (click)="ClickSubmitDieren()" class="small button">Zoek Dieren</button>
     
   
 </div>
@@ -21,9 +21,9 @@ Data
 
 <br>
 <div *ngIf="ShowData">
-    <button (click)="prev()">Vorige</button>
+    <button (click)="prev()" class="small button">Vorige</button>
     Pagina : {{Currentpage}}
-    <button (click)="next()">Volgende</button>
+    <button (click)="next()" class="small button">Volgende</button>
     <br> Aantal resultaten per pagina : 
     
         <select name="Pages" id="" [(ngModel)]="ShowAantal" (ngModelChange)="onChangeSelection()">
@@ -54,7 +54,7 @@ Data
         </div>
         <div class="buttonbox">
               
-                <button pButton type="button" *ngIf="AS.isAuthenticated()" class="ui-button-rounded" label="Dier != levend" (click)="DeleteClick(i)"></button>
+                <button pButton type="button" *ngIf="AS.isAuthenticated()"class="small button" label="Dier != levend" (click)="DeleteClick(i)"></button>
 
             </div>
         
@@ -63,5 +63,5 @@ Data
 
 </div>
 </div>
-<button pButton type="button" *ngIf="AS.isAuthenticated()" class="ui-button-rounded" label="Nieuw Dier" [routerLink]="['/CreateDier']" [routerLinkActive]="['ui-button-success']"></button>
+<button pButton type="button" class="small button" *ngIf="AS.isAuthenticated()" class="small button" label="Nieuw Dier" [routerLink]="['/CreateDier']" [routerLinkActive]="['ui-button-success']"></button>
         
